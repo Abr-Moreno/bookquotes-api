@@ -5,7 +5,15 @@ const express = require('express');
 // Imports the database connection module.
 //const mongodb = require('./db/connect');
 
-// Import 'configured' routers for different endpoints
+/* ====================================================
+  Import 'configured' routers for different endpoints
+==================================================== */
+const authorsRoutes = require('./routes/authors');
+const booksRoutes = require('./routes/books');
+const quotesRoutes = require('./routes/quotes');
+const topicsRoutes = require('./routes/topics');
+// Swagger documentation router
+const swaggerRoute = require('./routes/swagger');
 
 // Creates the Express application through the express() function.
 const app = express();
@@ -17,12 +25,21 @@ const app = express();
 // Middleware to parse JSON bodies in requests:
 app.use(express.json());
 
-/* =============
-Routes
-==============*/
+/* ====================================================
+                      ROUTES
+==================================================== */
+// Home Page route: displays simple message at the root URL.
 app.get('/', (req, res) => {
   res.send('BookQuotes API is running.');
 });
+// Main routes; uses route mounting.
+app.use('/authors', authorsRoutes);
+app.use('/books', booksRoutes);
+app.use('/quotes', quotesRoutes);
+app.use('/topics', topicsRoutes);
+// Swagger documentation route @ /api-docs
+app.use('/api-docs', swaggerRoutes);
+
 
 // Use either the port provided by the production environment, or 3000 locally.
 const PORT = process.env.PORT || 3000;
