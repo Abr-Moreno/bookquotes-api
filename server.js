@@ -38,7 +38,7 @@ app.use('/books', booksRoutes);
 app.use('/quotes', quotesRoutes);
 app.use('/topics', topicsRoutes);
 // Swagger documentation route @ /api-docs
-app.use('/api-docs', swaggerRoutes);
+app.use('/api-docs', swaggerRoute);
 
 
 // Use either the port provided by the production environment, or 3000 locally.
