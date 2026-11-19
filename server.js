@@ -1,9 +1,10 @@
 require('dotenv').config();
+const { MongoClient } = require('mongodb');
 
 const express = require('express');
 
 // Imports the database connection module.
-//const mongodb = require('./db/connect');
+const mongodb = require('./db/connect');
 
 /* ====================================================
   Import 'configured' routers for different endpoints
@@ -50,7 +51,7 @@ const PORT = process.env.PORT || 3000;
 const startServer = async () => {
   try {
     // Use when database is available.
-    //await mongodb.initDb();
+    await mongodb.initDb();
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
