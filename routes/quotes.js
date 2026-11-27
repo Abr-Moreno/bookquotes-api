@@ -20,6 +20,11 @@ const express = require('express');
 // Access to controllers/quotes.js file:
 const quotesController = require('../controllers/quotes');
 
+// MongoDB ObjectId validation for URL id parameter
+const validateId = require('../middleware/validateId');
+// Joi validation for incoming Quote request bodies
+const validateQuote = require('../middleware/validateQuote');
+
 // Creates a router object to define quotes routes
 const router = express.Router();
 
@@ -31,16 +36,16 @@ const router = express.Router();
 router.get('/', quotesController.getAllQuotes);
 
 // GET a single quote by ID
-router.get('/:id', quotesController.getQuoteById);
+router.get('/:id', validateId, quotesController.getQuoteById);
 
 // POST a new quote
-router.post('/', quotesController.createQuote);
+router.post('/', validateQuote, quotesController.createQuote);
 
 // PUT (update) an existing quote (by ID)
-router.put('/:id', quotesController.updateQuote);
+router.put('/:id', validateId, validateQuote, quotesController.updateQuote);
 
 // DELETE a quote (by ID)
-router.delete('/:id', quotesController.deleteQuote);
+router.delete('/:id', validateId, quotesController.deleteQuote);
 
 
 // Export quotes router to be used in server.js

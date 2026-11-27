@@ -17,6 +17,9 @@ const express = require('express');
 // Access to controllers/topics.js file:
 const topicsController = require('../controllers/topics');
 
+// MongoDB ObjectId validation for URL id parameter
+const validateId = require('../middleware/validateId');
+
 // Creates a router object to define topics routes
 const router = express.Router();
 
@@ -28,7 +31,7 @@ const router = express.Router();
 router.get('/', topicsController.getAllTopics);
 
 // GET a single topic by ID
-router.get('/:id', topicsController.getTopicById);
+router.get('/:id', validateId, topicsController.getTopicById);
 
 
 // Export topics router to be used in server.js

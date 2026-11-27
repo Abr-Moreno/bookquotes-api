@@ -20,6 +20,11 @@ const express = require('express');
 // Access to controllers/books.js file:
 const booksController = require('../controllers/books');
 
+// MongoDB ObjectId validation for URL id parameter
+const validateId = require('../middleware/validateId');
+// Joi validation for incoming Book request bodies
+const validateBook = require('../middleware/validateBook');
+
 // Creates a router object to define books routes
 const router = express.Router();
 
@@ -31,16 +36,16 @@ const router = express.Router();
 router.get('/', booksController.getAllBooks);
 
 // GET a single book by ID
-router.get('/:id', booksController.getBookById);
+router.get('/:id', validateId, booksController.getBookById);
 
 // POST a new book
-router.post('/', booksController.createBook);
+router.post('/', validateBook, booksController.createBook);
 
 // PUT (update) an existing book (by ID)
-router.put('/:id', booksController.updateBook);
+router.put('/:id', validateId, validateBook, booksController.updateBook);
 
 // DELETE a book (by ID)
-router.delete('/:id', booksController.deleteBook);
+router.delete('/:id', validateId, booksController.deleteBook);
 
 
 // Export books router to be used in server.js
