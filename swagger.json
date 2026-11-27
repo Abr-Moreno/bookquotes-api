@@ -1,265 +1,622 @@
 {
-	"swagger": "2.0",
-	"info": {
-		"title": "BookQuotes API",
-		"description": "\n    BookQuotes is a REST API for exploring books and authors through quotes and the ideas behind them.\n\n    Authentication:\n    Public users can retrieve and explore the library's information through the API.\n    Authenticated users can add, update, and delete library resources.\n\n    User authentication and account management are handled through Auth0's hosted login using express-openid-connect. The application maintains an authenticated session after succssful login.\n\n    Authors:\n    Users can retrive information about authors.\n    Authenticated users can create, read, update, and delete authors.\n\n    Books:\n    Users can retrive information about books.\n    Authenticated users can create, read, update, and delete books.\n\n    Quotes:\n    Users can retrive information about quotes.\n    Authenticated users can create, read, update, and delete quotes.\n\n    Topics:\n    Topics provide information for exploring ideas connected to authors, books, and quotes.\n    Topics are read-only for all users and are publicly readable through the topics endpoint.\n    ",
-		"version": "1.0.0"
-	},
-	"host": "localhost:3000",
-	"basePath": "/",
-	"schemes": ["http"],
-	"paths": {
-		"/": {
-			"get": {
-				"description": "",
-				"responses": {
-					"200": {
-						"description": "OK"
-					}
-				}
-			}
-		},
-		"/authors/": {
-			"get": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"post": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/authors/{id}": {
-			"get": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"put": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"delete": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/books/": {
-			"get": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"post": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/books/{id}": {
-			"get": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"put": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"delete": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/quotes/": {
-			"get": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"post": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/quotes/{id}": {
-			"get": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"put": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			},
-			"delete": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/topics/": {
-			"get": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/topics/{id}": {
-			"get": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		},
-		"/api-docs/": {
-			"get": {
-				"description": "",
-				"responses": {
-					"default": {
-						"description": ""
-					}
-				}
-			}
-		}
-	}
+  "swagger": "2.0",
+  "info": {
+    "title": "BookQuotes API",
+    "description": "\n    BookQuotes is a REST API for exploring books and authors through quotes and the ideas behind them.\n\n    Authentication:\n    Public users can retrieve and explore the library's information through the API.\n    Authenticated users can add, update, and delete library resources.\n\n    User authentication and account management are handled through Auth0's hosted login using express-openid-connect. The application maintains an authenticated session after succssful login.\n\n    Authors:\n    Users can retrive information about authors.\n    Authenticated users can create, read, update, and delete authors.\n\n    Books:\n    Users can retrive information about books.\n    Authenticated users can create, read, update, and delete books.\n\n    Quotes:\n    Users can retrive information about quotes.\n    Authenticated users can create, read, update, and delete quotes.\n\n    Topics:\n    Topics provide information for exploring ideas connected to authors, books, and quotes.\n    Topics are read-only for all users and are publicly readable through the topics endpoint.\n    ",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authors/": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The author to create.",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/authors/{id}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The author to update.",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/books/": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The book to create.",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The book to update.",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/quotes/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "All quotes.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Quote"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected database or server error.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The quote to create.",
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/quotes/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "A 24-character hexadecimal MongoDB quote ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested quote.",
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          },
+          "400": {
+            "description": "Invalid quote ID.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Quote not found.",
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          },
+          "500": {
+            "description": "Unexpected database or server error.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The quote to update.",
+            "schema": {
+              "$ref": "#/definitions/Quote"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/topics/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "All topics.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Topic"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected database or server error.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/topics/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "A 24-character hexadecimal MongoDB topic ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested topic.",
+            "schema": {
+              "$ref": "#/definitions/Topic"
+            }
+          },
+          "400": {
+            "description": "Invalid topic ID.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Topic not found.",
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          },
+          "500": {
+            "description": "Unexpected database or server error.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/api-docs/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Author": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "example": "Miguel de Cervantes Saavedra"
+        },
+        "birthplace": {
+          "type": "string",
+          "x-nullable": true,
+          "example": "Alcalá de Henares, Spain"
+        },
+        "birthDate": {
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true,
+          "example": "1547-09-29"
+        },
+        "deathDate": {
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true,
+          "example": "1616-04-22"
+        },
+        "topicIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{24}$"
+          },
+          "example": [
+            "507f1f77bcf86cd799439013"
+          ]
+        }
+      }
+    },
+    "Book": {
+      "type": "object",
+      "required": [
+        "authorId",
+        "title"
+      ],
+      "properties": {
+        "authorId": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{24}$",
+          "description": "ID of the author associated with this book.",
+          "example": "507f1f77bcf86cd799439011"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "example": "Don Quixote"
+        },
+        "publicationDate": {
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true,
+          "example": "1605-01-01"
+        },
+        "pageCount": {
+          "type": "integer",
+          "minimum": 0,
+          "example": 950
+        },
+        "description": {
+          "type": "string",
+          "x-nullable": true,
+          "example": "A would-be knight sets out with his squire, Sancho Panza."
+        },
+        "language": {
+          "type": "string",
+          "x-nullable": true,
+          "example": "Spanish"
+        },
+        "topicId": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{24}$",
+          "x-nullable": true,
+          "example": "507f1f77bcf86cd799439013"
+        }
+      }
+    },
+    "Quote": {
+      "type": "object",
+      "required": [
+        "bookId",
+        "quote"
+      ],
+      "properties": {
+        "bookId": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{24}$",
+          "description": "ID of the book this quote comes from.",
+          "example": "507f1f77bcf86cd799439012"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "example": "Freedom, Sancho, is one of the most precious gifts that heaven has bestowed upon men."
+        },
+        "context": {
+          "type": "string",
+          "x-nullable": true,
+          "example": "Don Quixote speaks to Sancho about freedom in Part II, Chapter 58."
+        },
+        "topicIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{24}$"
+          },
+          "example": [
+            "507f1f77bcf86cd799439013"
+          ]
+        }
+      }
+    },
+    "Topic": {
+      "type": "object",
+      "required": [
+        "_id",
+        "name",
+        "definition"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "readOnly": true,
+          "description": "MongoDB ID returned with the topic.",
+          "example": "507f1f77bcf86cd799439013"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "example": "Freedom"
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 1,
+          "example": "The ability to make choices and act without undue restraint."
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "error"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Invalid topic ID. Use a 24-character hexadecimal MongoDB ID."
+        }
+      }
+    },
+    "Message": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Topic not found"
+        }
+      }
+    }
+  }
 }

@@ -20,6 +20,11 @@ const express = require('express');
 // Access to controllers/authors.js file:
 const authorsController = require('../controllers/authors');
 
+// MongoDB ObjectId validation for URL id parameter
+const validateId = require('../middleware/validateId');
+// Joi validation for incoming Author request bodies
+const validateAuthor = require('../middleware/validateAuthor');
+
 // Creates a router object to define authors routes
 const router = express.Router();
 
@@ -31,16 +36,16 @@ const router = express.Router();
 router.get('/', authorsController.getAllAuthors);
 
 // GET a single author by ID
-router.get('/:id', authorsController.getAuthorById);
+router.get('/:id', validateId, authorsController.getAuthorById);
 
 // POST a new author
-router.post('/', authorsController.createAuthor);
+router.post('/', validateAuthor, authorsController.createAuthor);
 
 // PUT (update) an existing author (by ID)
-router.put('/:id', authorsController.updateAuthor);
+router.put('/:id', validateId, validateAuthor, authorsController.updateAuthor);
 
 // DELETE an author (by ID)
-router.delete('/:id', authorsController.deleteAuthor);
+router.delete('/:id', validateId, authorsController.deleteAuthor);
 
 
 // Export authors router to be used in server.js
